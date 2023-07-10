@@ -42,7 +42,7 @@ def get_message():
 @app.route('/')
 def webhook():
     bot.remove_webhook()
-    bot.set_webhook(url='https://test-bot-cicd-knu.herokuapp.com/' + TOKEN)
+    bot.set_webhook(url='https://june-bot-test-a3212272285f.herokuapp.com/' + TOKEN)
     return '', 200
 
 
