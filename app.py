@@ -36,14 +36,14 @@ def get_message():
     json_string = request.get_data().decode('utf-8')
     update = telebot.types.Update.de_json(json_string)
     bot.process_new_updates([update])
-    return '', 200
+    return 'Test Bot', 200
 
 
 @app.route('/')
 def webhook():
     bot.remove_webhook()
     bot.set_webhook(url='https://june-bot-test-a3212272285f.herokuapp.com/' + TOKEN)
-    return '', 200
+    return 'Test Bot', 200
 
 
 if __name__ == '__main__':
