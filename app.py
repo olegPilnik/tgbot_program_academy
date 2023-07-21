@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv('.env')
-app = Flask(__name__)
+# app = Flask(__name__)
 
 TOKEN = os.environ.get('TOKEN', '')
 bot = telebot.TeleBot(TOKEN)
@@ -31,7 +31,7 @@ def handler_programs(message):
     bot.send_message(chat_id=message.chat.id, text='Оберіть програму навчання', reply_markup=keyboard)
 
 
-@app.route('/' + TOKEN, methods=['POST'])
+# @app.route('/' + TOKEN, methods=['POST'])
 def get_message():
     json_string = request.get_data().decode('utf-8')
     update = telebot.types.Update.de_json(json_string)
@@ -39,7 +39,7 @@ def get_message():
     return 'Test Bot', 200
 
 
-@app.route('/')
+# @app.route('/')
 def webhook():
     bot.remove_webhook()
     bot.set_webhook(url='https://june-bot-test-a3212272285f.herokuapp.com/' + TOKEN)
@@ -47,4 +47,5 @@ def webhook():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+    # app.run(host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+    bot.polling()
